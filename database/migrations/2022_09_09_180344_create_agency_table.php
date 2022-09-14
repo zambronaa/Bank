@@ -13,13 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('agency', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->enum('document_type', ['CPF', 'CNPJ']);
-            $table->string('document_number');
-            $table->string('password');
+            $table->foreignId('user_id')->constrained('account')->onDelete('cascade');
+            $table->string('id_agency');
+            $table->string('id_bank');
             $table->timestamps();
         });
     }
@@ -31,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('agency');
     }
 };

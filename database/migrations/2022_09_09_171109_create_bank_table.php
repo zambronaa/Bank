@@ -1,3 +1,4 @@
+
 <?php
 
 use Illuminate\Database\Migrations\Migration;
@@ -13,13 +14,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('bank', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('agency_id');
+            $table->foreignId('agency_id')->constrained('agency')->onDelete('cascade');
             $table->string('name');
-            $table->string('email')->unique();
-            $table->enum('document_type', ['CPF', 'CNPJ']);
-            $table->string('document_number');
-            $table->string('password');
+            $table->string('number_bank');
             $table->timestamps();
         });
     }
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('bank');
     }
 };

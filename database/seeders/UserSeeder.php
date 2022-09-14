@@ -26,10 +26,13 @@ class UserSeeder extends Seeder
         //     'updated_at'     => Carbon::now(),
         //     'created_at'    => Carbon::now(),
         // ]);
-        User::created([
+        User::create([
             'name'          => 'Lucas',
             'email'         =>'Lucas@gamil.com',
-            'password'      =>Hash::make('eai12345'),
+            'password'      => bcrypt('12345'),
+            'document_type' => 'CPF',
+            'document_number' => '123456'
+
         ]);
 
     }

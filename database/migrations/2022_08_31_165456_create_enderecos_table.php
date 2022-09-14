@@ -3,7 +3,6 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use League\CommonMark\Extension\Table\Table;
 
 return new class extends Migration
 {
@@ -14,17 +13,17 @@ return new class extends Migration
      */
     public function up()
     {
-        //criar no modo addresses no bd
-        Schema::create('addresses',function(Blueprint $table) {
+        Schema::create('enderecos', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->string('cep');
             $table->string('addreses');
             $table->string('number');
             $table->string('district');
-            $table->string('cep');
             $table->string('complement')->nullable();
-            $table->char('state',length:'7');
+            $table->string('state');
             $table->string('city');
-            $table->string('cnpj')->nullable();
             $table->timestamps();
         });
     }
@@ -36,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists(table:('addresses'));
+        Schema::dropIfExists('enderecos');
     }
 };

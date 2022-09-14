@@ -13,9 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('addresses', function (Blueprint $table) {
-            $table->foreignId('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+        Schema::create('account', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->unsignedBigInteger('id_agenci');
+            $table->string('balance');
+            $table->string('number_cont');
+            $table->timestamps();
         });
     }
 
@@ -26,9 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('addresses', function (Blueprint $table) {
-            // $table->dropForeign('addresses_user_id_foreign');
-            // $table->dropColumn('user_id');
-        });
+        Schema::dropIfExists('account');
     }
 };

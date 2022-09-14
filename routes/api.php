@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\formController;
+use PHPUnit\TextUI\XmlConfiguration\Group;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,9 +16,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+//cadastro
+Route::middleware('auth:api')->group(function () {
+    Route::post('login',[formController::class,'userlogin']);;});
+Route::post('/form',    [formController::class,'store'  ]);
+Route::get('/show/{id}',     [formController::class,'show'   ]);
+Route::put('/edit/{id}',     [formController::class,'edit']);
+Route::delete('/delete/{id}',[formController::class,'delete']);
 
-Route::get('/form',[FormController::class,'index'])->name('formGET');
-route::post('/form',[FormController::class,'store'])->name('formSTORE');
+
+
