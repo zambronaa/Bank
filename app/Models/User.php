@@ -50,6 +50,11 @@ class User extends Authenticatable
     {
         return $this->hasOne(Endereco::class);
     }
+
+    public function account()
+    {
+        return $this->hasOne(Account::class);
+    }
 }
 
 

@@ -45,7 +45,41 @@ class StoreUpdateUserFromRequest extends FormRequest
             'district'          => 'required',
             'complement'        => 'string|nullable',
             'state'             => 'required|',
-            'city'              => 'required'
+            'city'              => 'required',
+
+                    // BANK
+            'name_bank'         => 'string',
+            'number_bank'       => 'numeric',
+
+                    //AGENCY
+            'number_agency'     => 'numeric',
+
+            //         //ACCOUNT
+            'balance'           => 'numeric|',
+            'number_account'    => 'numeric|unique:accounts,number_account',
+
+                       //SAQUE
+            'retired'           => 'numeric',
+            'accounts_id'       => 'numeric',
+
+                        //TICKET
+            // 'number_ticket'     =>'numeric',
+            // 'value_ticket'      =>'numeric',
+            // 'date_ticket'       =>'date'
+
+
+            //         //EXTRACT
+            // 'every_payments'    => 'numeric',
+            // 'every_transfer'    => 'numeric',
+
+            //         //PAYMENT
+            // 'value_payment'     => 'numeric',
+            // 'account_payment'   => 'numeric',
+
+            //         //TRANSFER
+            // 'value_transfer'    => 'numeric',
+            // 'account_transfer'  => 'numeric',
+            // 'account_Fromtransfer'  =>'numeric'
         ];
     }
 }

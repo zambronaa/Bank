@@ -13,11 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('agency', function (Blueprint $table) {
+        Schema::create('transfers', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('account')->onDelete('cascade');
-            $table->string('id_agency');
-            $table->string('id_bank');
+            $table->foreignId('accounts_id')->constrained('accounts')->onDelete('cascade');
+            $table->string('value_transfer');
+            $table->string('account_Totransfer'); //conta de quem transferiu
+            $table->string('account_Fromtransfer');// Conta de quem recebeu
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('agency');
+        Schema::dropIfExists('transfers');
     }
 };

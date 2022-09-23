@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\Account;
+use App\Models\Agency;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class AccountSeeder extends Seeder
+class AgencySeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,11 +15,9 @@ class AccountSeeder extends Seeder
      */
     public function run()
     {
-        Account::create([
-            'user_id' => 1,
-            'agency_id' => 1,
-            'balance' => 10000,
-            'number_account' => '0011332243343400',
+        Agency::create([
+            'bank_id' => 1,
+            'number_agency' => '0001',
         ]);
     }
 }

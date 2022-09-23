@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Schema\ForeignIdColumnDefinition;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -13,16 +14,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('enderecos', function (Blueprint $table) {
+        Schema::create('accounts', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->string('cep');
-            $table->string('addreses');
-            $table->string('number');
-            $table->string('district');
-            $table->string('complement')->nullable();
-            $table->string('state');
-            $table->string('city');
+            $table->foreignId('agency_id')->constrained('agencies')->onDelete('cascade');
+            $table->string('balance');
+            $table->string('number_account');
             $table->timestamps();
         });
     }
@@ -34,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('enderecos');
+        Schema::dropIfExists('accounts');
     }
 };

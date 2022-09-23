@@ -1,4 +1,3 @@
-
 <?php
 
 use Illuminate\Database\Migrations\Migration;
@@ -14,12 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('bank', function (Blueprint $table) {
+        Schema::create('payments', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('agency_id');
-            $table->foreignId('agency_id')->constrained('agency')->onDelete('cascade');
-            $table->string('name');
-            $table->string('number_bank');
+            $table->foreignId('accounts_id')->constrained('accounts')->onDelete('cascade');
+            $table->string('value_payment');
+            $table->string('account_payment');
             $table->timestamps();
         });
     }
@@ -31,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bank');
+        Schema::dropIfExists('payments');
     }
 };

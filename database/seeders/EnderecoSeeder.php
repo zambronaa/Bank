@@ -16,14 +16,14 @@ class EnderecoSeeder extends Seeder
     public function run()
     {
         Endereco::create([
-            'user_id' => 1,
-            'cep' =>        '13000222',
-            'addreses' =>   'ru das oliveiras',
-            'number' =>     '12',
-            'district' =>   'bairro do lucas',
-            'complement' =>  'casa',
-            'state' =>       'Sao paulo',
-            'city'=>        'horotlandia',
+            'user_id'   => 1,
+            'cep'       =>      '13000222',
+            'addreses'  =>      'ru das oliveiras',
+            'number'    =>      '12',
+            'district'  =>      'bairro do lucas',
+            'complement' =>     'casa',
+            'state'     =>      'Sao paulo',
+            'city'      =>      'horotlandia',
         ]);
     }
 }
